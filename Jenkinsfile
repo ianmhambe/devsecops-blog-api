@@ -19,8 +19,8 @@ pipeline {
         stage('SAST with ESLint') {
             steps {
                 dir('app') {
-                    sh 'npm install eslint eslint-plugin-security eslint-formatter-unix --save-dev'
-                    sh 'npx eslint server.js --format eslint-formatter-unix --output-file eslint-report.txt --config eslint.config.js || true'
+                    sh 'npm install eslint eslint-plugin-security --save-dev'
+                    sh 'npx eslint server.js --format stylish --output-file eslint-report.txt --config eslint.config.js || true'
                 }
             }
         }
