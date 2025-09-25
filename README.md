@@ -4,7 +4,7 @@ A Node.js REST API for a blog, demonstrating DevSecOps with Jenkins, Docker, and
 ## Project Structure
 - `app/`: Node.js (Express) API code.
 - `infra/`: Terraform scripts for AWS ECS.
-- `Dockerfile`: Containerizes the app.
+- `Dockerfile`: Containerizes the app using `node:20-slim`, runs as non-root user.
 - `Jenkinsfile`: Defines the CI/CD pipeline with security scans.
 
 ## API Endpoints
@@ -17,3 +17,4 @@ A Node.js REST API for a blog, demonstrating DevSecOps with Jenkins, Docker, and
 ## Status
 - Set up repository and Jenkins.
 - Built and tested Node.js blog API locally.
+- Containerized the app with Docker and tested locally.
