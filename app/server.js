@@ -1,10 +1,16 @@
-const express = require('express');
+import express from 'express';
 const app = express();
 const port = 3000;
 
 app.use(express.json());
+app.use((req, res, next) => {
+  res.setHeader('Content-Security-Policy', "default-src 'self'");
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('X-Frame-Options', 'DENY');
+  next();
+});
 
-let posts = []; // In-memory storage for simplicity
+let posts = [];
 
 // Create a post
 app.post('/posts', (req, res) => {
