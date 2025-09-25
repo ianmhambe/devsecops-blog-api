@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git url: 'https://github.com/ianmhambe/devsecops-blog-api.git', branch: 'main'
+                git url: 'https://github.com/ianmhambe/devsecops-blog-api.git', branch: 'master'
             }
         }
         stage('Install Dependencies') {
