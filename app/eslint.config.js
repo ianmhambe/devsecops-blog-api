@@ -14,7 +14,7 @@ export default [
     },
     rules: {
       ...security.configs.recommended.rules,
-      'no-console': 'off'
+      'no-console': 'warn' // Changed from 'off' to 'warn'
     }
   }
 ];
