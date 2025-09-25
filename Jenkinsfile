@@ -38,7 +38,7 @@ pipeline {
         }
         stage('Container Scan with Trivy') {
             steps {
-                sh 'docker run --rm aquasec/trivy:latest image --severity CRITICAL,HIGH blog-api || true'
+                sh 'docker run --rm -v /var/run/docker.sock:/var/run/docker.sock aquasec/trivy:latest image --severity CRITICAL,HIGH blog-api || true'
             }
         }
     }
