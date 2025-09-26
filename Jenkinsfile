@@ -41,10 +41,18 @@ pipeline {
                 sh 'docker run --rm -v /var/run/docker.sock:/var/run/docker.sock aquasec/trivy:latest image --severity CRITICAL,HIGH blog-api || true'
             }
         }
+        stage('Checkov Scan') {
+            steps {
+                dir('terraform') {
+                    sh '/var/jenkins_home/checkov-venv/bin/checkov -d . -o json --output-file checkov-report.json'
+                }
+                archiveArtifacts artifacts: 'terraform/checkov-report.json', allowEmptyArchive: true
+            }
+        }
     }
     post {
         always {
-            archiveArtifacts artifacts: 'app/eslint-report.txt', allowEmptyArchive: true
+            archiveArtifacts artifacts: 'app/eslint-report.txt,terraform/checkov-report.json', allowEmptyArchive: true
         }
     }
 }
