@@ -44,6 +44,7 @@ pipeline {
         stage('Checkov Scan') {
             steps {
                 dir('terraform') {
+		    sh 'rm -rf checkov-report.json || true'
                     sh '/var/jenkins_home/checkov-venv/bin/checkov -d . -o json --output-file checkov-report.json'
                 }
                 archiveArtifacts artifacts: 'terraform/checkov-report.json', allowEmptyArchive: true
