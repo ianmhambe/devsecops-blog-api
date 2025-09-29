@@ -5,7 +5,5 @@ RUN npm install -g npm@11.6.1
 COPY app/package*.json ./
 RUN npm install --production
 COPY app/server.js ./
-RUN useradd -m appuser
-USER appuser
 EXPOSE 3000
 CMD ["node", "server.js"]
