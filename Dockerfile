@@ -1,4 +1,4 @@
-FROM node:20-slim
+FROM node:20-alpine
 WORKDIR /app
 # Update npm to a version with cross-spawn >= 7.0.5
 RUN npm install -g npm@11.6.1
