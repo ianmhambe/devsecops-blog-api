@@ -12,3 +12,5 @@ app/package-lock.json
 *.log
 *.txt
 *.json
+
+checkov-venv/

@@ -44,16 +44,16 @@ pipeline {
         stage('Checkov Scan') {
             steps {
                 dir('terraform') {
-		    sh 'rm -rf checkov-report.json || true'
+                    sh 'rm -rf checkov-report.json || true'
                     sh '/var/jenkins_home/checkov-venv/bin/checkov -d . -o json --output-file checkov-report.json'
                 }
-                archiveArtifacts artifacts: 'terraform/checkov-report.json', allowEmptyArchive: true
+                archiveArtifacts artifacts: 'terraform/checkov-report.json/results_json.json', allowEmptyArchive: true
             }
         }
     }
     post {
         always {
-            archiveArtifacts artifacts: 'app/eslint-report.txt,terraform/checkov-report.json', allowEmptyArchive: true
+            archiveArtifacts artifacts: 'app/eslint-report.txt,terraform/checkov-report.json/results_json.json', allowEmptyArchive: true
         }
     }
 }
